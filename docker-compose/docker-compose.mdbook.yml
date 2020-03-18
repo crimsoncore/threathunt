@@ -1,0 +1,15 @@
+version: '2'
+services:
+  mdbook:
+    image: crimsoncorelabs/mdbook
+    container_name: mdbook
+    restart: unless-stopped
+    volumes:
+    - /opt/wiki:/opt/wiki
+    ports:
+      - 3000:3000
+    networks:
+      - elastic
+networks:
+  elastic:
+    driver: bridge

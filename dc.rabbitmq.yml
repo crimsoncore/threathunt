@@ -1,0 +1,59 @@
+version: '2'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: unless-stopped
+    volumes:
+    - /opt/threathunt/rabbitmq/data:/var/lib/rabbitmq:rw
+    - /opt/threathunt/rabbitmq/definitions.json:/opt/definitions.json:ro
+    - /opt/threathunt/rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+    ports:
+      - 5672:5672
+      - 5673:5673
+      - 15672:15672
+    networks:
+      - elastic
+  logstashMQ:
+    image: docker.elastic.co/logstash/logstash:7.4.2
+    container_name: logstashMQ    
+    ports:
+     - 5044:5044
+    restart: unless-stopped
+    volumes:
+    - /opt/threathunt/logstashMQ/pipeline/:/usr/share/logstash/pipeline/
+    - /opt/threathunt/logstashMQ/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+    networks:
+      - elastic
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    restart: unless-stopped
+    volumes:
+    - /opt/threathunt/portainer/data:/data
+    - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 9000:9000
+    networks:
+      - elastic
+  guacamole:
+    image: tunip/guacamole
+    container_name: guacamole
+    restart: unless-stopped
+    volumes:
+      - /opt/threathunt/guacamole/config:/config
+    ports:
+      - 8080:8080
+    networks:
+      - elastic
+  guacamole-daemon:
+    image: guacamole/guacd
+    container_name: guacamole_daemon
+    restart: unless-stopped
+    ports:
+      - 4822:4822
+    networks:
+      - elastic
+networks:
+  elastic:
+    driver: bridge

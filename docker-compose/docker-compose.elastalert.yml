@@ -1,0 +1,19 @@
+version: '2'
+services:
+  elastalert:
+    image: ivankrizsan/elastalert:latest
+    container_name: elastalert
+    restart: unless-stopped
+    environment:
+          - ELASTICSEARCH_HOST=es01
+          - CONTAINER_TIMEZONE=Europe/Brussels
+    volumes:
+          - /opt/threathunt/elastalert/rules:/opt/rules
+          - /opt/threathunt/elastalert/config/elastalert_config.yaml:/opt/config/elastalert_config.yaml
+          - /opt/threathunt/elastalert/logs:/opt/logs
+         #- /opt_elastalert/rule_templates:/opt/elastalert/rule_templates
+    networks:
+      - elastic
+networks:
+  elastic:
+    driver: bridge

@@ -1,0 +1,30 @@
+rabbitmq 10 queues
+student image hashcat snapshot
+
+sysmon default config (clean)
+
+enrichtment internal/external tags
+https://www.elastic.co/guide/en/logstash/current/plugins-filters-dns.html
+
+
+sysmon 12-13-14 registry (T1060) HKLM HKLU - currentversion\run runonce - sticky keys - cleartext   
+add winlog to beat
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest\UseLogonCredential to 1
+
+command : /bin/sh -c "./bin/logstash-plugin install logstash-filter-rest; /usr/local/bin/docker-entrypoint.sh"
+
+domainstats logstash
+
+desktop links processhacker, notepadd++, sysinternals
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce
+
+Guacamole docker
+ansible/terraform server (MGMT)
+jupyter notebooks
+
+sysmon creat remote thread (eid 8)

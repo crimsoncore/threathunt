@@ -1,0 +1,29 @@
+title: KERBEROAST Activity
+status: production
+description: 'Detects the attack technique KERBEROAST which is used to move laterally inside the network'
+references:
+    - https://www.trustedsec.com/2018/05/art_of_kerberoast/
+    - https://attack.mitre.org/techniques/T1208/
+author: TrustedSec (method) / Luk Schoonaert (rule)
+tags:
+    - attack.credential access
+    - attack.t1208
+logsource:
+    product: windows
+    service: security
+    definition: 
+detection:
+    selection:
+        - EventID: 4769
+          Status: "0x0"
+          TicketEncryptionType: "0x17"
+          TicketOptions: "*08100*"
+    filter:
+        ServiceName : ”krbtgt”
+        ServiceName : "*$"
+        ServiceName : "*$@*"
+    condition: selection and not filter
+falsepositives:
+    - Administrator activity
+    - Penetration tests
+level: medium

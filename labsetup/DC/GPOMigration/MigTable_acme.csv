@@ -1,0 +1,5 @@
+Source,Destination,Type
+"acme.local","acme.local","Domain"
+"acme","acme","Domain"
+"\\acme.local\","\\acme.com\","UNC"
+"\\acme\","\\acme\","UNC"

@@ -1,0 +1,21 @@
+[http]
+  [http.routers]
+    [http.routers.caldera]
+      entryPoints = ["web"]
+      service = "caldera"
+      rule = "HostRegexp(`{subdomain:caldera.*}.{subdomain:.*}`)"
+    [http.routers.rabbitmq]
+      entryPoints = ["web"]
+      service = "rabbitmq"
+      rule = "HostRegexp(`{subdomain:rabbitmq.*}.{subdomain:.*}`)" 
+  [http.services]
+    [http.services.caldera]
+      [http.services.caldera.loadBalancer]
+        passHostHeader = true
+        [[http.services.caldera.loadBalancer.servers]]
+          url = "https://10.0.0.101"
+    [http.services.rabbitmq]
+      [http.services.rabbitmq.loadBalancer]
+        passHostHeader = true
+        [[http.services.rabbitmq.loadBalancer.servers]]
+          url = "http://10.0.0.6:15672"

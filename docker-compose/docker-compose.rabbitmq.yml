@@ -1,0 +1,19 @@
+version: '2'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: unless-stopped
+    volumes:
+    - /opt/threathunt/rabbitmq/data:/var/lib/rabbitmq:rw
+    - /opt/threathunt/rabbitmq/definitions.json:/opt/definitions.json:ro
+    - /opt/threathunt/rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+    ports:
+      - 5672:5672
+      - 5673:5673
+      - 15672:15672
+    networks:
+      - elastic
+networks:
+  elastic:
+    driver: bridge

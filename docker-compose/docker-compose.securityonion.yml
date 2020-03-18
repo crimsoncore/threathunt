@@ -1,0 +1,25 @@
+version: '2'
+services:
+  domainstats:
+    image: securityonionsolutions/so-domainstats:latest
+    container_name: domainstats
+    restart: unless-stopped
+    ports:
+      - 20000:20000
+    volumes:
+      - /opt/threathunt/domain_stats/top-1m.csv:/opt/domain_stats/top-1m.csv
+    networks:
+      - elastic
+
+  freqserver:
+    image: securityonionsolutions/so-freqserver
+    container_name: freqserver
+    restart: unless-stopped
+    ports:
+      - 10004:10004
+    networks:
+      - elastic
+
+networks:
+  elastic:
+    driver: bridge

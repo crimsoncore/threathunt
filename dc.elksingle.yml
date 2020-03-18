@@ -1,0 +1,88 @@
+version: '2'
+services:
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.2
+    container_name: es01
+    restart: unless-stopped
+    environment:
+      - node.name=es01
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - data01:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - elastic
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.4.2
+    container_name: logstash    
+    ports:
+     - 5044:5044
+    restart: unless-stopped
+    volumes:
+    - /opt/threathunt/logstash/pipeline/:/usr/share/logstash/pipeline/
+    - /opt/threathunt/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+    networks:
+      - elastic
+  kibana:
+    image: 'docker.elastic.co/kibana/kibana:7.4.2'
+    container_name: kibana
+    restart: unless-stopped
+    volumes:
+      - /opt/threathunt/kibana/config/:/usr/share/kibana/config/
+    ports:
+      - '5601:5601'
+    networks:
+      - elastic
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    restart: unless-stopped
+    volumes:
+    - /opt/threathunt/portainer/data:/data
+    - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 9000:9000
+    networks:
+      - elastic      
+  domainstats:
+    image: securityonionsolutions/so-domainstats:latest
+    container_name: domainstats
+    restart: unless-stopped
+    ports:
+      - 20000:20000
+    volumes:
+      - /opt/threathunt/domain_stats/top-1m.csv:/opt/domain_stats/top-1m.csv
+    networks:
+      - elastic
+  freqserver:
+    image: securityonionsolutions/so-freqserver
+    container_name: freqserver
+    restart: unless-stopped
+    ports:
+      - 10004:10004
+    networks:
+      - elastic
+  cerebro:
+    image: lmenezes/cerebro:latest
+    container_name: cerebro
+    restart: unless-stopped
+    ports:
+      - 9001:9000
+    networks:
+      - elastic
+volumes:
+  data01:
+    driver: local
+networks:
+  elastic:
+    driver: bridge
+

@@ -1,0 +1,14 @@
+version: '2'
+services:
+  zeek:
+    image: fixel/zeek
+    container_name: zeek
+    restart: unless-stopped
+    volumes:
+     - /opt/threathunt/zeek/logs:/usr/local/bro/logs
+    # - /opt/threathunt/zeek/etc/:/usr/local/bro/etc
+     - /opt/threathunt/zeek/local.zeek:/usr/local/bro/share/bro/site/local.zeek
+    cap_add:
+      - NET_RAW #or NET_ADMIN
+    network_mode: "host"
+    command: -i ens33 -C # local "Site::local_nets += { 172.16.100.0/24 }"

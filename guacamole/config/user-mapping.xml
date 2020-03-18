@@ -1,0 +1,119 @@
+<user-mapping>
+    <authorize username="thadmin" password="Password1234!">
+        <connection name="RDP Student01">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-1.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student01@acme.local</param>
+            <param name="password">student01</param>
+        </connection>
+        <connection name="RDP Student02">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-2.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student02@acme.local</param>
+            <param name="password">student02</param>
+        </connection>
+        <connection name="RDP Student03">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-3.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student03@acme.local</param>
+            <param name="password">student03</param>
+        </connection>
+        <connection name="RDP Student04">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-4.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student04@acme.local</param>
+            <param name="password">student04</param>
+        </connection>
+        <connection name="RDP Student05">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-5.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student05@acme.local</param>
+            <param name="password">student05</param>
+        </connection>
+        <connection name="RDP Student06">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-6.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student06@acme.local</param>
+            <param name="password">student06</param>
+        </connection>
+        <connection name="RDP Student07">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-7.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student07@acme.local</param>
+            <param name="password">student07</param>
+        </connection>
+        <connection name="RDP Student08">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-8.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student08@acme.local</param>
+            <param name="password">student08</param>
+        </connection>
+        <connection name="RDP Student09">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-9.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student09@acme.local</param>
+            <param name="password">student09</param>
+        </connection>
+        <connection name="RDP Student10">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-10.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student10@acme.local</param>
+            <param name="password">student10</param>
+        </connection>
+        <connection name="RDP Student11">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-11.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student11@acme.local</param>
+            <param name="password">student11</param>
+        </connection>
+        <connection name="RDP Student12">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-12.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student12@acme.local</param>
+            <param name="password">student12</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.5</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>
+</user-mapping>

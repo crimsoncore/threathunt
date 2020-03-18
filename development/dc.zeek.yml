@@ -1,0 +1,13 @@
+version: '2'
+services:
+  zeek:
+    image: blacktop/zeek
+    container_name: zeek
+    restart: unless-stopped
+    volumes:
+     - /opt/threathunt/zeek/logs:/pcap
+     - /opt/threathunt/zeek/local.zeek:/usr/local/zeek/share/zeek/site/local.zeek
+    cap_add:
+      - NET_RAW #or NET_ADMIN
+    network_mode: "host"
+    command: -i af_packet::ens33 local "Site::local_nets += { 172.16.100.0/24 }"

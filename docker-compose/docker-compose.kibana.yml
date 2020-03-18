@@ -1,0 +1,16 @@
+version: '2'
+services:
+  kibana:
+    image: 'docker.elastic.co/kibana/kibana:7.4.2'
+    container_name: kibana
+    restart: unless-stopped
+    volumes:
+      - /opt/threathunt/kibana/config/:/usr/share/kibana/config/
+    ports:
+      - '5601:5601'
+    networks:
+      - elastic
+
+networks:
+  elastic:
+    driver: bridge

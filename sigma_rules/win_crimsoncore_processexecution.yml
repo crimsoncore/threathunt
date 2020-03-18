@@ -1,0 +1,22 @@
+title: Sysmon Process Execution
+id: 
+status: experimental
+description: 
+references:
+    - https://
+author:
+tags:
+    - attack.lateral_movement
+    - attack.t1105
+logsource:
+    product: windows
+    service: sysmon
+detection:
+    selection:
+        EventID: 1
+    condition: selection
+falsepositives:
+    - 'Unknown'
+    - '@subTee in your network'
+level: high
+
