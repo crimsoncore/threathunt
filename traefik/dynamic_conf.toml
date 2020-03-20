@@ -1,6 +1,6 @@
 [http]
   [http.routers]
-    [http.routers.portainermq]
+    [http.routers.portainer-mq]
       entryPoints = ["web"]
       service = "portainer-mq"
       rule = "HostRegexp(`{subdomain:portainer-mq.*}.{subdomain:.*}`)"
