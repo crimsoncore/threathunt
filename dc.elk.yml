@@ -90,7 +90,7 @@ services:
     container_name: portainer
     restart: unless-stopped
     labels:
-      - "traefik.http.routers.portainer.rule=HostRegexp(`{subdomain:portainer.*}.{subdomain:.*}`)"
+      - "traefik.http.routers.portainer.rule=HostRegexp(`{subdomain:portainer-elk.*}.{subdomain:.*}`)"
       - "traefik.enable=true"
       - "traefik.http.routers.portainer.entrypoints=web"
     volumes:
