@@ -2,17 +2,17 @@
   [http.routers]
     [http.routers.portainermq]
       entryPoints = ["web"]
-      service = "portainermq"
-      rule = "HostRegexp(`{subdomain:portainermq.*}.{subdomain:.*}`)"
+      service = "portainer-mq"
+      rule = "HostRegexp(`{subdomain:portainer-mq.*}.{subdomain:.*}`)"
     [http.routers.rabbitmq]
       entryPoints = ["web"]
       service = "rabbitmq"
       rule = "HostRegexp(`{subdomain:rabbitmq.*}.{subdomain:.*}`)" 
   [http.services]
-    [http.services.portainermq]
-      [http.services.portainermq.loadBalancer]
+    [http.services.portainer-mq]
+      [http.services.portainer-mq.loadBalancer]
         passHostHeader = true
-        [[http.services.portainermq.loadBalancer.servers]]
+        [[http.services.portainer-mq.loadBalancer.servers]]
           url = "http://10.0.0.6:9000"
     [http.services.rabbitmq]
       [http.services.rabbitmq.loadBalancer]
