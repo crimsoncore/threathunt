@@ -1,0 +1,26 @@
+alert:
+- debug
+description: Detects recon using net.exe commands
+filter:
+- query:
+    query_string:
+      query: (winlog.channel:"Microsoft\-Windows\-Sysmon\/Operational" AND winlog.event_id:"1"
+        AND winlog.event_data.OriginalFileName:(*net.exe *net1.exe))
+index: logstash-*
+name: Net-commands_0
+priority: 2
+realert:
+  minutes: 0
+type: any
+
+alert_text: "{2} Endpoint: {0} CommandLine {1}"
+alert_text_type: alert_text_only
+alert_text_args:
+- host.name
+- winlog.event_data.CommandLine
+- "@timestamp"
+
+#alert:
+#- "slack"
+#slack:
+#slack_webhook_url: "https://hooks.slack.com/services/###pasteyourwebhookhere###"
