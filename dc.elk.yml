@@ -171,6 +171,16 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.mdbook.entrypoints=web"
       - "traefik.http.routers.mdbook.middlewares=th-auth"
+  elastalert:
+    image: crimsoncorelabs/elastalert
+    container_name: elastalert
+    restart: unless-stopped
+    volumes:
+    - /opt/threathunt/elastalert/config:/opt/elastalert/config
+    - /opt/threathunt/elastalert/rules:/opt/elastalert/rules
+    - /opt/threathunt/elastalert/log:/opt/elastalert/log
+    networks:
+      - elastic
 volumes:
   data01:
     driver: local
