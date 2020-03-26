@@ -164,6 +164,7 @@ services:
     - /opt/wiki:/opt/wiki
     ports:
       - 3000:3000
+      - 3001:3001 
     networks:
       - elastic
     labels:
@@ -171,6 +172,8 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.mdbook.entrypoints=web"
       - "traefik.http.routers.mdbook.middlewares=th-auth"
+     networks:
+      - elastic
   elastalert:
     image: crimsoncorelabs/elastalert
     container_name: elastalert
