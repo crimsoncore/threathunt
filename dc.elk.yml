@@ -165,14 +165,12 @@ services:
     ports:
       - 3000:3000
       - 3001:3001 
-    networks:
-      - elastic
     labels:
       - "traefik.http.routers.mdbook.rule=HostRegexp(`{subdomain:mdbook.*}.{subdomain:.*}`)"
       - "traefik.enable=true"
       - "traefik.http.routers.mdbook.entrypoints=web"
       - "traefik.http.routers.mdbook.middlewares=th-auth"
-     networks:
+    networks:
       - elastic
   elastalert:
     image: crimsoncorelabs/elastalert
