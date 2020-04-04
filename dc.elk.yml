@@ -68,6 +68,7 @@ services:
     volumes:
     - /opt/threathunt/logstash/pipeline/:/usr/share/logstash/pipeline/
     - /opt/threathunt/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+    - /opt/threathunt/logstash/pki/:/usr/share/logstash/pki
     networks:
       - elastic
   kibana:
