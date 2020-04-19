@@ -1,0 +1,15 @@
+version: '3'
+services:
+  zeek3:
+    image: crimsoncorelabs/zeek:3.0.0
+    container_name: zeek3
+    restart: unless-stopped
+    volumes:
+     - /opt/zeek/logs:/usr/local/zeek-3.0.0/logs
+     # - /opt/zeek/config:/usr/local/zeek-3.0.0/etc
+     - /opt/zeek/pcap:/pcap
+    working_dir: /usr/local/zeek-3.0.0/logs
+    cap_add:
+      - NET_RAW #or NET_ADMIN
+    network_mode: "host"
+    command: zeek -i ens33 -C
