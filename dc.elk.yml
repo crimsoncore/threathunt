@@ -64,6 +64,8 @@ services:
     container_name: logstash_rest    
     ports:
      - 5044:5044
+     - 5045:5045
+     - 5046:5046
     restart: unless-stopped
     volumes:
     - /opt/threathunt/logstash/pipeline/:/usr/share/logstash/pipeline/
