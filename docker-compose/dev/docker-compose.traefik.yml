@@ -1,0 +1,30 @@
+version: '2'
+services:
+  traefik:
+    image: traefik:latest
+    container_name: traefik
+    command:
+      #- "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--providers.file.filename=dynamic_conf.toml"
+      - "--providers.file.directory=/"
+      - "--providers.file.watch=true"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.th-auth.basicauth.users=thadmin:$$apr1$$2RnW3J50$$bjzbmnFizHfUNlegGHFAN0"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /opt/threathunt/traefik/dynamic_conf.toml:/dynamic_conf.toml
+    restart: unless-stopped
+    networks:
+      - elastic
+networks:
+  elastic:
+    driver: bridge

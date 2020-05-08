@@ -1,9 +1,12 @@
-version: '2'
-services:
-  cerebro:
+cerebro:
     image: lmenezes/cerebro:latest
     container_name: cerebro
     restart: unless-stopped
+    labels:
+      - "traefik.http.routers.cerebro.rule=HostRegexp(`{subdomain:cerebro.*}.{subdomain:.*}`)"
+      - "traefik.enable=true"
+      - "traefik.http.routers.cerebro.entrypoints=web"
+      - "traefik.http.routers.cerebro.middlewares=th-auth"
     ports:
       - 9001:9000
     networks:

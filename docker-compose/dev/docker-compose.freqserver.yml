@@ -1,0 +1,13 @@
+version: '2'
+services:    
+  freqserver:
+    image: securityonionsolutions/so-freqserver
+    container_name: freqserver
+    restart: unless-stopped
+    ports:
+      - 10004:10004
+    networks:
+      - elastic
+networks:
+  elastic:
+    driver: bridge

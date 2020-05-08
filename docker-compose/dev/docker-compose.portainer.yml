@@ -4,6 +4,10 @@ services:
     image: portainer/portainer
     container_name: portainer
     restart: unless-stopped
+    labels:
+      - "traefik.http.routers.portainer.rule=HostRegexp(`{subdomain:portainer-elk.*}.{subdomain:.*}`)"
+      - "traefik.enable=true"
+      - "traefik.http.routers.portainer.entrypoints=web"
     volumes:
     - /opt/threathunt/portainer/data:/data
     - /var/run/docker.sock:/var/run/docker.sock
@@ -11,6 +15,7 @@ services:
       - 9000:9000
     networks:
       - elastic
+
 networks:
   elastic:
     driver: bridge

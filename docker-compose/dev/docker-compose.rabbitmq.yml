@@ -1,6 +1,6 @@
 version: '2'
 services:
-  rabbitmq:
+   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
     restart: unless-stopped

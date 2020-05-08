@@ -4,6 +4,11 @@ services:
     image: 'docker.elastic.co/kibana/kibana:7.4.2'
     container_name: kibana
     restart: unless-stopped
+    labels:
+      - "traefik.http.routers.kibana.rule=HostRegexp(`{subdomain:kibana.*}.{subdomain:.*}`)"
+      - "traefik.enable=true"
+      - "traefik.http.routers.kibana.entrypoints=web"
+      - "traefik.http.routers.kibana.middlewares=th-auth"
     volumes:
       - /opt/threathunt/kibana/config/:/usr/share/kibana/config/
     ports:
