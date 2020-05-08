@@ -1,4 +1,6 @@
-cerebro:
+version: '2'
+services:  
+  cerebro:
     image: lmenezes/cerebro:latest
     container_name: cerebro
     restart: unless-stopped
