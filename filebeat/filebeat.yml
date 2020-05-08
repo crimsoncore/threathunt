@@ -1,0 +1,20 @@
+filebeat.inputs:
+- type: log
+  paths:
+    - /var/log/host/conn.log
+  tags: ["zeek","zeek_conn"]
+- type: log
+  paths:
+    - /var/log/host/dns.log
+  tags: ["zeek","zeek_dns"]
+- type: log
+  paths:
+    - /var/log/host/http.log
+  tags: ["zeek","zeek_http"]
+- type: log
+  paths:
+    - /var/log/host/ssl.log
+  tags: ["zeek","zeek_ssl"] 
+
+output.logstash:
+  hosts: ["10.0.0.6:5044"]
