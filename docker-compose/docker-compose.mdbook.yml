@@ -1,4 +1,6 @@
-mdbook:
+version: '2'
+services:
+  mdbook:
     image: crimsoncorelabs/mdbook
     container_name: mdbook
     restart: unless-stopped
