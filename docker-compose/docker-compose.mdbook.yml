@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   mdbook:
     image: crimsoncorelabs/mdbook
