@@ -1,0 +1,16 @@
+winlogbeat.event_logs:
+  - name: Security
+    event_id: 4624,4625,4648,4662,4663,4672,4720,4722,4732,4776,4688,5140,5145,1102,4798,4799,4656,4657,4698
+  - name: Microsoft-Windows-PowerShell/Operational
+    event_id: 4103,4104
+  - name: System
+    event_id: 7045,4697
+  - name: Microsoft-Windows-TerminalServices-RemoteConnectionManager/Operational
+    event_id: 1149
+  - name:  Microsoft-Windows-AppLocker/EXE and DLL
+    event_id: 8003, 8006
+  - name: Microsoft-Windows-Sysmon/Operational
+    event_id: 1,3,6,7,8,10,11,12,13,14,17,18,22
+
+output.logstash:
+  hosts: ["10.0.0.6:5044"]
