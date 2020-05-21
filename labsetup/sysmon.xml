@@ -1,12 +1,14 @@
-<Sysmon schemaversion="4.21">
+<Sysmon schemaversion="4.30">
 
-<!--SYSMON META CONFIG-->
+<!-- SYSMON META CONFIG-->
+
 <HashAlgorithms>sha256,imphash</HashAlgorithms>
 
-<!--SYSMON FILTER CONFIG-->
+<!-- SYSMON FILTER CONFIG-->
+
  <EventFiltering>
  
- <!--SYSMON EVENT ID 1 : PROCESS CREATED [ProcessCreate]-->
+ <!-- SYSMON EVENT ID 1 : PROCESS CREATED [ProcessCreate]-->
 
   <ProcessCreate onmatch="exclude">
     <Image condition="begin with">C:\Program Files\Winlogbeat\</Image>
@@ -18,7 +20,15 @@
     <Image condition="is">C:\Windows\System32\RuntimeBroker.exe</Image>
   </ProcessCreate>
 
-<!-- Event ID 3 == Network Connection. -->
+<!-- SYSMON EVENT ID 2 == FILE CREATION TIME RETROACTIVELY CHANGED IN THE FILESYSTEM [FileCreateTime] -->
+
+  <FileCreateTime onmatch="include">
+			<Image name="T1099" condition="begin with">C:\Users</Image> <!--Look for timestomping in user area, usually nothing should be doing that here-->
+			<TargetFilename name="T1099" condition="end with">.exe</TargetFilename> <!--Look for backdated executables anywhere-->
+			<Image name="T1099" condition="begin with">\Device\HarddiskVolumeShadowCopy</Image> <!--Nothing should be written here | Credit: @SBousseaden [ https://twitter.com/SBousseaden/status/1133030955407630336 ] -->
+	</FileCreateTime>
+
+<!-- SYSMON EVENT ID 3 == NETWORK CONNECTION INITIATED [NetworkConnect] -->
 
   <NetworkConnect onmatch="include">
     <DestinationPort>445</DestinationPort> <!-- SMB -->
@@ -33,31 +43,70 @@
   <NetworkConnect onmatch="exclude">
     <Image condition="end with">iexplore.exe</Image>
     <Image condition="end with">firefox.exe</Image>
-    <Image condition="end with">chrome.exe</Image>
+    <!-- <Image condition="end with">chrome.exe</Image> -->
     <Image condition="begin with">C:\WindowsAzure\Packages</Image>
     <Image condition="begin with">C:\Program Files\Git\</Image>
     <Image condition="begin with">C:\Program Files\Microsoft Monitoring Agent\Agent\HealthService.exe</Image>
-
   </NetworkConnect>
 
-<!-- Event ID 6 == Driver Loaded. -->
+<!-- SYSMON EVENT ID 4 == Sysmon service state changed -->
+
+<!-- SYSMON EVENT ID 5 == Process terminated -->
+ 
+ <ProcessTerminate onmatch="include">
+			<!--NOTE: Using "include" with no rules means nothing in this section will be logged-->
+ </ProcessTerminate>
+
+<!-- SYSMON EVENT ID 6 == DRIVER LOADED INTO KERNEL [DriverLoad] -->
 
   <DriverLoad onmatch="exclude">
-    <Signature condition="contains">microsoft</Signature>
-    <Signature condition="contains">windows</Signature>
+    <Signature condition="contains">microsoft</Signature> <!--Exclude signed Microsoft drivers-->
+    <Signature condition="contains">windows</Signature> <!--Exclude signed Microsoft drivers-->
+    <Signature condition="begin with">Intel </Signature> <!--Exclude signed Intel drivers-->
   </DriverLoad>
+
+<!-- SYSMON EVENT ID 7 == DLL (IMAGE) LOADED BY PROCESS [ImageLoad] -->
+
+  <ImageLoad onmatch="include">
+		<!--NOTE: Using "include" with no rules means nothing in this section will be logged-->
+  </ImageLoad>
+
+<!-- SYSMON EVENT ID 8 == REMOTE THREAD CREATED [CreateRemoteThread] -->
   
-<!--SYSMON EVENT ID 10 : Process Access [FileCreate]-->
+  <CreateRemoteThread onmatch="exclude">
+			<!--COMMENT: Exclude mostly-safe sources and log anything else.-->
+			<SourceImage condition="is">C:\Windows\system32\wbem\WmiPrvSE.exe</SourceImage>
+			<SourceImage condition="is">C:\Windows\system32\svchost.exe</SourceImage>
+			<SourceImage condition="is">C:\Windows\system32\wininit.exe</SourceImage>
+			<SourceImage condition="is">C:\Windows\system32\csrss.exe</SourceImage>
+			<SourceImage condition="is">C:\Windows\system32\services.exe</SourceImage>
+			<SourceImage condition="is">C:\Windows\system32\winlogon.exe</SourceImage>
+			<SourceImage condition="is">C:\Windows\system32\audiodg.exe</SourceImage>
+			<StartModule condition="is">C:\Windows\system32\kernel32.dll</StartModule>
+			<TargetImage condition="is">C:\Program Files (x86)\Google\Chrome\Application\chrome.exe</TargetImage>
+	</CreateRemoteThread>
+
+<!-- SYSMON EVENT ID 9 == RAW DISK ACCESS [RawAccessRead] -->
+
+  <RawAccessRead onmatch="include">
+	  <!--NOTE: Using "include" with no rules means nothing in this section will be logged-->
+	</RawAccessRead>
+
+<!--SYSMON EVENT ID 10 : INTER-PROCESS ACCESS [ProcessAccess] -->
 
   <ProcessAccess onmatch="include">
     <TargetImage name="technique_id=T1003,technique_name=Credential Dumping" condition="is">C:\Windows\system32\lsass.exe</TargetImage> <!-- lsass injections -->
   </ProcessAccess>
 
-<!--SYSMON EVENT ID 11 : FILE CREATED [FileCreate]-->
+  <ProcessAccess onmatch="exclude">
+     <!--NOTE: Using "exclude" with no rules means everything in this section will be logged-->
+  </ProcessAccess>
+
+<!--SYSMON EVENT ID 11 : FILE CREATED [FileCreate] -->
 
   <FileCreate onmatch="exclude">
-    <Image condition="begin with">C:\Program Files\Winlogbeat\</Image>
-    <Image condition="begin with">C:\Program Files (x86)\winlogbeat-7.4.2-windows-x86_64\winlogbeat.exe</Image>
+    <TargetFilename condition="begin with">C:\Program Files\Winlogbeat\</TargetFilename>
+    <Image condition="begin with">C:\Program Files (x86)\winlogbeat-7.6.2-windows-x86_64\winlogbeat.exe</Image>
     <Image condition="begin with">C:\WindowsAzure\Packages\</Image>
     <Image condition="begin with">C:\WindowsAzure\Logs\AggregateStatus\</Image>
     <TargetFilename condition="begin with">C:\WindowsAzure\Logs\AggregateStatus\</TargetFilename>
@@ -70,7 +119,11 @@
     <TargetFilename condition="begin with">C:\ProgramData\winlogbeat</TargetFilename>
   </FileCreate>
 
-<!-- Event ID 12,13,14 == RegObject added/deleted, RegValue Set, RegObject Renamed. -->
+<!-- SYSMON EVENT ID 12,13,14 == REGISTRY MODIFICATION [RegistryEvent] -->
+  <!--EVENT 12: "Registry object added or deleted"-->
+  <!--EVENT 13: "Registry value set"-->
+  <!--EVENT 14: "Registry objected renamed"-->
+
   <RegistryEvent onmatch="include">
     <TargetObject name="technique_id=T1003,technique_name=Credential Dumping" condition="begin with">HKLM\SYSTEM\CurrentControlSet\Control\Lsa</TargetObject>  
     <TargetObject name="technique_id=T1003,technique_name=Credential Dumping" condition="begin with">HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest</TargetObject> 
@@ -82,8 +135,18 @@
     <TargetObject name="technique_id=T1089,technique_name=Disabling Security Tools" condition="begin with">HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection\DisableScanOnRealtimeEnable</TargetObject> 
   </RegistryEvent>
 
-<!--SYSMON EVENT ID 17 & 18 : Named Pipes [PipeEvent]-->
+<!-- SYSMON EVENT ID 15 : ALTERNATE DATA STREAM CREATED [FileCreateStreamHash]-->
 
+  <FileCreateStreamHash onmatch="include">
+    <!--NOTE: Using "include" with no rules means nothing in this section will be logged-->
+  </FileCreateStreamHash>
+
+<!-- SYSMON EVENT ID 16 : SYSMON CONFIGURATION CHANGE -->
+
+<!-- SYSMON EVENT ID 17 & 18 : PIPE CREATED / PIPE CONNECTED [PipeEvent] [PipeEvent]-->
+  <!--EVENT 17: "Pipe Created"-->
+	<!--EVENT 18: "Pipe Connected"-->
+  
   <PipeEvent onmatch="exclude">
     <PipeName condition="is">\none</PipeName>
     <PipeName condition="contains">Anonymous Pipe</PipeName>
@@ -112,12 +175,23 @@
     <PipeName condition="begin with">\Winsock2</PipeName> <!-- svchost -->
   </PipeEvent>
 
-<!--SYSMON EVENT ID 22 : DNS Query [DnsQuery]-->
+<!-- SYSMON EVENT ID 19 & 20 & 21 : WmiEventFilter activity detected [WmiEvent] -->
+  <!--EVENT 19: "WmiEventFilter activity detected"-->
+  <!--EVENT 20: "WmiEventConsumer activity detected"-->
+	<!--EVENT 21: "WmiEventConsumerToFilter activity detected"-->
+
+  <WmiEvent onmatch="include">
+			<!--NOTE: Using "include" with no rules means nothing in this section will be logged-->
+	</WmiEvent>
+
+<!-- SYSMON EVENT ID 22 : DNS Query [DnsQuery] -->
   <DnsQuery onmatch="exclude">
 	  <QueryName condition="end with">.local</QueryName>
     <Image condition="is">C:\Windows\sysmon64.exe</Image>
 	  <QueryName condition="is">wpad</QueryName>
   </DnsQuery> 
  
+<!-- SYSMON EVENT ID 23 : A file delete was detected [FileDelete] -->
+
  </EventFiltering>
 </Sysmon>
