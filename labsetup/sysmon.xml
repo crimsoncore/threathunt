@@ -117,6 +117,7 @@
     <Image condition="is">C:\Windows\System32\backgroundTaskHost.exe</Image>
     <Image condition="is">C:\Windows\System32\RuntimeBroker.exe</Image>
     <TargetFilename condition="begin with">C:\ProgramData\winlogbeat</TargetFilename>
+    <TargetFilename condition="begin with">C:\ProgramData\microsoft</TargetFilename>
   </FileCreate>
 
 <!-- SYSMON EVENT ID 12,13,14 == REGISTRY MODIFICATION [RegistryEvent] -->
