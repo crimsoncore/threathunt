@@ -10,7 +10,7 @@ services:
       - /opt/threathunt/elastalert/config:/opt/elastalert/config
       - /opt/threathunt/elastalert/rules:/opt/elastalert/rules
       - /opt/threathunt/elastalert/log:/opt/elastalert/log
-      - /opt_elastalert/rule_templates:/opt/elastalert/rule_templates
+      - /opt/threathunt/elastalert/rule_templates:/opt/elastalert/rule_templates
     networks:
       - elastic    
 networks:
