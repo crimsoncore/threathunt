@@ -34,6 +34,12 @@
     <DestinationPort>445</DestinationPort> <!-- SMB -->
     <DestinationPort>443</DestinationPort> <!-- HTTPS -->
     <DestinationPort>80</DestinationPort> <!-- HTTP -->
+    <DestinationPort>88</DestinationPort> <!-- KERBEROS -->
+    <DestinationPort>3389</DestinationPort> <!-- RDP -->
+    <DestinationPort>389</DestinationPort> <!-- LDAP / AD -->
+    <DestinationPort>636</DestinationPort> <!-- LDAPS / AD-->
+    <DestinationPort>5985</DestinationPort> <!-- WINRM over HTTP -->
+    <DestinationPort>5986</DestinationPort> <!-- WINRM over HTTP -->
     <DestinationPort>8080</DestinationPort> 
     <DestinationPort>8081</DestinationPort>
     <DestinationPort>8888</DestinationPort>
