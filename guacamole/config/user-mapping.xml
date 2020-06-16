@@ -116,7 +116,7 @@
             <param name="enable-sftp">true</param>
         </connection>
     </authorize>
-        <authorize username="student01" password="student01">
+    <authorize username="student01" password="student01">
         <connection name="RDP Student02">
             <protocol>rdp</protocol>
             <param name="hostname">ws-1.acme.local</param>
@@ -170,7 +170,7 @@
             <param name="enable-sftp">true</param>
         </connection>
     </authorize>
-        <authorize username="student04" password="student04">
+    <authorize username="student04" password="student04">
         <connection name="RDP Student04">
             <protocol>rdp</protocol>
             <param name="hostname">ws-4.acme.local</param>
@@ -188,7 +188,7 @@
             <param name="enable-sftp">true</param>
         </connection>
     </authorize>
-        <authorize username="student05" password="student05">
+    <authorize username="student05" password="student05">
         <connection name="RDP Student05">
             <protocol>rdp</protocol>
             <param name="hostname">ws-5.acme.local</param>
@@ -206,8 +206,7 @@
             <param name="enable-sftp">true</param>
         </connection>
     </authorize>
-    </authorize>
-        <authorize username="student06" password="student06">
+    <authorize username="student06" password="student06">
         <connection name="RDP Student06">
             <protocol>rdp</protocol>
             <param name="hostname">ws-6.acme.local</param>
@@ -225,8 +224,7 @@
             <param name="enable-sftp">true</param>
         </connection>
     </authorize>    
-    </authorize>
-        <authorize username="student07" password="student07">
+    <authorize username="student07" password="student07">
         <connection name="RDP Student07">
             <protocol>rdp</protocol>
             <param name="hostname">ws-7.acme.local</param>
