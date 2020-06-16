@@ -116,7 +116,25 @@
             <param name="enable-sftp">true</param>
         </connection>
     </authorize>
-    <authorize username="student2" password="student2">
+        <authorize username="student01" password="student01">
+        <connection name="RDP Student02">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-1.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student01@acme.local</param>
+            <param name="password">student01</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.50</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>
+    <authorize username="student02" password="student02">
         <connection name="RDP Student02">
             <protocol>rdp</protocol>
             <param name="hostname">ws-2.acme.local</param>
@@ -134,7 +152,7 @@
             <param name="enable-sftp">true</param>
         </connection>
     </authorize>
-    <authorize username="student3" password="student3">
+    <authorize username="student03" password="student03">
         <connection name="RDP Student03">
             <protocol>rdp</protocol>
             <param name="hostname">ws-3.acme.local</param>
@@ -152,7 +170,7 @@
             <param name="enable-sftp">true</param>
         </connection>
     </authorize>
-        <authorize username="student4" password="student4">
+        <authorize username="student04" password="student04">
         <connection name="RDP Student04">
             <protocol>rdp</protocol>
             <param name="hostname">ws-4.acme.local</param>
@@ -170,7 +188,7 @@
             <param name="enable-sftp">true</param>
         </connection>
     </authorize>
-        <authorize username="student5" password="student5">
+        <authorize username="student05" password="student05">
         <connection name="RDP Student05">
             <protocol>rdp</protocol>
             <param name="hostname">ws-5.acme.local</param>
@@ -189,8 +207,8 @@
         </connection>
     </authorize>
     </authorize>
-        <authorize username="student6" password="student6">
-        <connection name="RDP Student05">
+        <authorize username="student06" password="student06">
+        <connection name="RDP Student06">
             <protocol>rdp</protocol>
             <param name="hostname">ws-6.acme.local</param>
             <param name="port">3389</param>
@@ -207,4 +225,23 @@
             <param name="enable-sftp">true</param>
         </connection>
     </authorize>    
+    </authorize>
+        <authorize username="student07" password="student07">
+        <connection name="RDP Student07">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-6.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student07@acme.local</param>
+            <param name="password">student07</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.56</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>       
 </user-mapping>
