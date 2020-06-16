@@ -229,7 +229,7 @@
         <authorize username="student07" password="student07">
         <connection name="RDP Student07">
             <protocol>rdp</protocol>
-            <param name="hostname">ws-6.acme.local</param>
+            <param name="hostname">ws-7.acme.local</param>
             <param name="port">3389</param>
             <param name="security">nla</param>
             <param name="ignore-cert">true</param>
