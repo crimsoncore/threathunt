@@ -3,8 +3,6 @@ services:
   elastalert:
     image: crimsoncorelabs/elastalert
     container_name: elastalert
-    depends_on:
-      - kibana
     restart: unless-stopped
     volumes:
       - /opt/threathunt/elastalert/config:/opt/elastalert/config
