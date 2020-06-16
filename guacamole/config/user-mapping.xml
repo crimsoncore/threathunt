@@ -116,4 +116,95 @@
             <param name="enable-sftp">true</param>
         </connection>
     </authorize>
+    <authorize username="student2" password="student2">
+        <connection name="RDP Student02">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-2.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student02@acme.local</param>
+            <param name="password">student02</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.51</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>
+    <authorize username="student3" password="student3">
+        <connection name="RDP Student03">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-3.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student03@acme.local</param>
+            <param name="password">student03</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.52</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>
+        <authorize username="student4" password="student4">
+        <connection name="RDP Student04">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-4.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student04@acme.local</param>
+            <param name="password">student04</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.53</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>
+        <authorize username="student5" password="student5">
+        <connection name="RDP Student05">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-5.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student05@acme.local</param>
+            <param name="password">student05</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.54</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>
+    </authorize>
+        <authorize username="student6" password="student6">
+        <connection name="RDP Student05">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-6.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student06@acme.local</param>
+            <param name="password">student06</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.55</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>    
 </user-mapping>
