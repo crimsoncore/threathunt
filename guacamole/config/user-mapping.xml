@@ -117,7 +117,7 @@
         </connection>
     </authorize>
     <authorize username="student01" password="student01">
-        <connection name="RDP Student02">
+        <connection name="RDP Student01">
             <protocol>rdp</protocol>
             <param name="hostname">ws-1.acme.local</param>
             <param name="port">3389</param>
