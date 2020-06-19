@@ -112,7 +112,7 @@
 
   <FileCreate onmatch="exclude">
     <TargetFilename condition="begin with">C:\Program Files\Winlogbeat\</TargetFilename>
-    <Image condition="begin with">C:\Program Files (x86)\winlogbeat-7.6.2-windows-x86_64\winlogbeat.exe</Image>
+    <Image condition="begin with">C:\Program Files (x86)\winlogbeat-7.8.0-windows-x86_64\winlogbeat.exe</Image>
     <Image condition="begin with">C:\WindowsAzure\Packages\</Image>
     <Image condition="begin with">C:\WindowsAzure\Logs\AggregateStatus\</Image>
     <TargetFilename condition="begin with">C:\WindowsAzure\Logs\AggregateStatus\</TargetFilename>
