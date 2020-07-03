@@ -126,6 +126,13 @@
     <TargetFilename condition="begin with">C:\ProgramData\microsoft</TargetFilename>
   </FileCreate>
 
+  <FileCreate onmatch="include">
+	  <TargetFilename name="technique_id=T1044,technique_name=File System Permissions Weakness" condition="begin with">C:\Windows\Temp\</TargetFilename> 
+	  <TargetFilename name="technique_id=T1047,technique_name=File System Permissions Weakness" condition="begin with">C:\Temp\</TargetFilename> 			
+    <TargetFilename name="technique_id=T1047,technique_name=File System Permissions Weakness" condition="begin with">C:\Users\</TargetFilename> 
+    <TargetFilename name="technique_id=T1047,technique_name=File System Permissions Weakness" condition="contains">\AppData\Temp\</TargetFilename>            
+  </FileCreate>
+
 <!-- SYSMON EVENT ID 12,13,14 == REGISTRY MODIFICATION [RegistryEvent] -->
   <!--EVENT 12: "Registry object added or deleted"-->
   <!--EVENT 13: "Registry value set"-->
