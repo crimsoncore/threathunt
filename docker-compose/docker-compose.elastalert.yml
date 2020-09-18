@@ -9,6 +9,8 @@ services:
       - /opt/threathunt/elastalert/rules:/opt/elastalert/rules
       - /opt/threathunt/elastalert/log:/opt/elastalert/log
       - /opt/threathunt/elastalert/rule_templates:/opt/elastalert/rule_templates
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
     networks:
       - elastic    
 networks:
