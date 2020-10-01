@@ -17,6 +17,7 @@
             <param name="ignore-cert">true</param>
             <param name="username">student02@acme.local</param>
             <param name="password">student02</param>
+            <param name="enable-wallpaper">true</param>
         </connection>
         <connection name="RDP Student03">
             <protocol>rdp</protocol>
