@@ -8,6 +8,7 @@
             <param name="ignore-cert">true</param>
             <param name="username">student01@acme.local</param>
             <param name="password">student01</param>
+            <param name="enable-wallpaper">true</param>
         </connection>
         <connection name="RDP Student02">
             <protocol>rdp</protocol>
@@ -27,6 +28,7 @@
             <param name="ignore-cert">true</param>
             <param name="username">student03@acme.local</param>
             <param name="password">student03</param>
+            <param name="enable-wallpaper">true</param>
         </connection>
         <connection name="RDP Student04">
             <protocol>rdp</protocol>
@@ -36,6 +38,7 @@
             <param name="ignore-cert">true</param>
             <param name="username">student04@acme.local</param>
             <param name="password">student04</param>
+            <param name="enable-wallpaper">true</param>
         </connection>
         <connection name="RDP Student05">
             <protocol>rdp</protocol>
@@ -45,6 +48,7 @@
             <param name="ignore-cert">true</param>
             <param name="username">student05@acme.local</param>
             <param name="password">student05</param>
+            <param name="enable-wallpaper">true</param>
         </connection>
         <connection name="RDP Student06">
             <protocol>rdp</protocol>
@@ -54,6 +58,7 @@
             <param name="ignore-cert">true</param>
             <param name="username">student06@acme.local</param>
             <param name="password">student06</param>
+            <param name="enable-wallpaper">true</param>
         </connection>
         <connection name="RDP Student07">
             <protocol>rdp</protocol>
@@ -63,6 +68,7 @@
             <param name="ignore-cert">true</param>
             <param name="username">student07@acme.local</param>
             <param name="password">student07</param>
+            <param name="enable-wallpaper">true</param>
         </connection>
         <connection name="RDP Student08">
             <protocol>rdp</protocol>
@@ -72,6 +78,7 @@
             <param name="ignore-cert">true</param>
             <param name="username">student08@acme.local</param>
             <param name="password">student08</param>
+            <param name="enable-wallpaper">true</param>
         </connection>
         <connection name="RDP Student09">
             <protocol>rdp</protocol>
@@ -81,6 +88,7 @@
             <param name="ignore-cert">true</param>
             <param name="username">student09@acme.local</param>
             <param name="password">student09</param>
+            <param name="enable-wallpaper">true</param>
         </connection>
         <connection name="RDP Student10">
             <protocol>rdp</protocol>
@@ -90,6 +98,7 @@
             <param name="ignore-cert">true</param>
             <param name="username">student10@acme.local</param>
             <param name="password">student10</param>
+            <param name="enable-wallpaper">true</param>
         </connection>
         <connection name="RDP Student11">
             <protocol>rdp</protocol>
@@ -99,6 +108,7 @@
             <param name="ignore-cert">true</param>
             <param name="username">student11@acme.local</param>
             <param name="password">student11</param>
+            <param name="enable-wallpaper">true</param>
         </connection>
         <connection name="RDP Student12">
             <protocol>rdp</protocol>
@@ -108,6 +118,7 @@
             <param name="ignore-cert">true</param>
             <param name="username">student12@acme.local</param>
             <param name="password">student12</param>
+            <param name="enable-wallpaper">true</param>
         </connection>
         <connection name="Linux SSH ELK">
             <protocol>ssh</protocol>
@@ -116,6 +127,13 @@
             <param name="font-name">Terminus</param>
             <param name="enable-sftp">true</param>
         </connection>
+         <connection name="Linux SSH MQ">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.6</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>       
     </authorize>
     <authorize username="student01" password="student01">
         <connection name="RDP Student01">
@@ -249,5 +267,100 @@
             <param name="font-name">Terminus</param>
             <param name="enable-sftp">true</param>
         </connection>
-    </authorize>       
+    </authorize>
+    <authorize username="student08" password="student08">
+        <connection name="RDP Student08">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-8.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student08@acme.local</param>
+            <param name="password">student08</param>
+            <param name="enable-wallpaper">true</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.58</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>
+    <authorize username="student09" password="student09">
+        <connection name="RDP Student09">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-9.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student09@acme.local</param>
+            <param name="password">student09</param>
+            <param name="enable-wallpaper">true</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.59</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>
+    <authorize username="student10" password="student10">
+        <connection name="RDP Student10">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-10.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student10@acme.local</param>
+            <param name="password">student10</param>
+            <param name="enable-wallpaper">true</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.60</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>     
+    <authorize username="student11" password="student11">
+        <connection name="RDP Student11">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-11.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student11@acme.local</param>
+            <param name="password">student11</param>
+            <param name="enable-wallpaper">true</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.61</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>
+    <authorize username="student12" password="student12">
+        <connection name="RDP Student012">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-12.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student12@acme.local</param>
+            <param name="password">student12</param>
+            <param name="enable-wallpaper">true</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.62</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>    
 </user-mapping>
