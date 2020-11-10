@@ -1,5 +1,25 @@
 <user-mapping>
     <authorize username="thadmin" password="Password1234!">
+        <connection name="RDP DC">
+            <protocol>rdp</protocol>
+            <param name="hostname">dc01.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">thadmin@acme.local</param>
+            <param name="password">Password1234!</param>
+            <param name="enable-wallpaper">true</param>
+        </connection>
+        <connection name="RDP FS">
+            <protocol>rdp</protocol>
+            <param name="hostname">fs01.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student01@acme.local</param>
+            <param name="password">student01</param>
+            <param name="enable-wallpaper">true</param>
+        </connection>
         <connection name="RDP Student01">
             <protocol>rdp</protocol>
             <param name="hostname">ws-1.acme.local</param>
@@ -120,16 +140,11 @@
             <param name="password">student12</param>
             <param name="enable-wallpaper">true</param>
         </connection>
-        <connection name="Linux SSH ELK">
-            <protocol>ssh</protocol>
-            <param name="hostname">10.0.0.5</param>
-            <param name="font-size">12</param>
-            <param name="font-name">Terminus</param>
-            <param name="enable-sftp">true</param>
-        </connection>
          <connection name="Linux SSH MQ">
             <protocol>ssh</protocol>
             <param name="hostname">10.0.0.6</param>
+            <param name="username">thadmin</param>
+            <param name="password">Password1234!</param>
             <param name="font-size">12</param>
             <param name="font-name">Terminus</param>
             <param name="enable-sftp">true</param>
