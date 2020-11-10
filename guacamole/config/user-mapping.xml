@@ -16,8 +16,8 @@
             <param name="port">3389</param>
             <param name="security">nla</param>
             <param name="ignore-cert">true</param>
-            <param name="username">student01@acme.local</param>
-            <param name="password">student01</param>
+            <param name="username">thadmin@acme.local</param>
+            <param name="password">Password1234!</param>
             <param name="enable-wallpaper">true</param>
         </connection>
         <connection name="RDP Student01">
