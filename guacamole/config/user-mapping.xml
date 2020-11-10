@@ -9,6 +9,7 @@
             <param name="username">thadmin@acme.local</param>
             <param name="password">Password1234!</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-sftp">true</param>
         </connection>
         <connection name="RDP FS">
             <protocol>rdp</protocol>
@@ -19,6 +20,7 @@
             <param name="username">student01@acme.local</param>
             <param name="password">student01</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-sftp">true</param>
         </connection>
         <connection name="RDP Student01">
             <protocol>rdp</protocol>
@@ -29,6 +31,7 @@
             <param name="username">student01@acme.local</param>
             <param name="password">student01</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-sftp">true</param>
         </connection>
         <connection name="RDP Student02">
             <protocol>rdp</protocol>
