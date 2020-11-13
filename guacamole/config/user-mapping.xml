@@ -29,6 +29,7 @@
             <param name="username">student01@acme.local</param>
             <param name="password">student01</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
             <param name="enable-drive">true</param>
             <param name="drive-path">/shared-folder</param>
         </connection>
