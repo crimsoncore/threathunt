@@ -9,6 +9,10 @@
             <param name="username">thadmin@acme.local</param>
             <param name="password">Password1234!</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
+            <param name="enable-drive">true</param>
+            <param name="create-drive-path">true</param>
+            <param name="DC-SHARE">/shared-folder</param>
         </connection>
         <connection name="RDP FS">
             <protocol>rdp</protocol>
@@ -19,6 +23,7 @@
             <param name="username">thadmin@acme.local</param>
             <param name="password">Password1234!</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="RDP Student01">
             <protocol>rdp</protocol>
@@ -30,8 +35,6 @@
             <param name="password">student01</param>
             <param name="enable-wallpaper">true</param>
             <param name="enable-font-smoothing">true</param>
-            <param name="enable-drive">true</param>
-            <param name="drive-path">/shared-folder</param>
         </connection>
         <connection name="RDP Student02">
             <protocol>rdp</protocol>
@@ -42,6 +45,7 @@
             <param name="username">student02@acme.local</param>
             <param name="password">student02</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="RDP Student03">
             <protocol>rdp</protocol>
@@ -52,6 +56,7 @@
             <param name="username">student03@acme.local</param>
             <param name="password">student03</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="RDP Student04">
             <protocol>rdp</protocol>
@@ -62,6 +67,7 @@
             <param name="username">student04@acme.local</param>
             <param name="password">student04</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="RDP Student05">
             <protocol>rdp</protocol>
@@ -72,6 +78,7 @@
             <param name="username">student05@acme.local</param>
             <param name="password">student05</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="RDP Student06">
             <protocol>rdp</protocol>
@@ -82,6 +89,7 @@
             <param name="username">student06@acme.local</param>
             <param name="password">student06</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="RDP Student07">
             <protocol>rdp</protocol>
@@ -92,6 +100,7 @@
             <param name="username">student07@acme.local</param>
             <param name="password">student07</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="RDP Student08">
             <protocol>rdp</protocol>
@@ -102,6 +111,7 @@
             <param name="username">student08@acme.local</param>
             <param name="password">student08</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="RDP Student09">
             <protocol>rdp</protocol>
@@ -112,6 +122,7 @@
             <param name="username">student09@acme.local</param>
             <param name="password">student09</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="RDP Student10">
             <protocol>rdp</protocol>
@@ -122,6 +133,7 @@
             <param name="username">student10@acme.local</param>
             <param name="password">student10</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="RDP Student11">
             <protocol>rdp</protocol>
@@ -132,6 +144,7 @@
             <param name="username">student11@acme.local</param>
             <param name="password">student11</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="RDP Student12">
             <protocol>rdp</protocol>
@@ -142,6 +155,7 @@
             <param name="username">student12@acme.local</param>
             <param name="password">student12</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
          <connection name="Linux SSH MQ">
             <protocol>ssh</protocol>
@@ -151,6 +165,7 @@
             <param name="font-size">12</param>
             <param name="font-name">Terminus</param>
             <param name="enable-sftp">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>       
     </authorize>
     <authorize username="student01" password="student01">
@@ -163,6 +178,7 @@
             <param name="username">student01@acme.local</param>
             <param name="password">student01</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="Linux SSH ELK">
             <protocol>ssh</protocol>
@@ -182,6 +198,7 @@
             <param name="username">student02@acme.local</param>
             <param name="password">student02</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="Linux SSH ELK">
             <protocol>ssh</protocol>
@@ -201,6 +218,7 @@
             <param name="username">student03@acme.local</param>
             <param name="password">student03</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="Linux SSH ELK">
             <protocol>ssh</protocol>
@@ -220,6 +238,7 @@
             <param name="username">student04@acme.local</param>
             <param name="password">student04</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="Linux SSH ELK">
             <protocol>ssh</protocol>
@@ -239,6 +258,7 @@
             <param name="username">student05@acme.local</param>
             <param name="password">student05</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="Linux SSH ELK">
             <protocol>ssh</protocol>
@@ -258,6 +278,7 @@
             <param name="username">student06@acme.local</param>
             <param name="password">student06</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="Linux SSH ELK">
             <protocol>ssh</protocol>
@@ -277,6 +298,7 @@
             <param name="username">student07@acme.local</param>
             <param name="password">student07</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="Linux SSH ELK">
             <protocol>ssh</protocol>
@@ -296,6 +318,7 @@
             <param name="username">student08@acme.local</param>
             <param name="password">student08</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="Linux SSH ELK">
             <protocol>ssh</protocol>
@@ -315,6 +338,7 @@
             <param name="username">student09@acme.local</param>
             <param name="password">student09</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="Linux SSH ELK">
             <protocol>ssh</protocol>
@@ -334,6 +358,7 @@
             <param name="username">student10@acme.local</param>
             <param name="password">student10</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="Linux SSH ELK">
             <protocol>ssh</protocol>
@@ -353,6 +378,7 @@
             <param name="username">student11@acme.local</param>
             <param name="password">student11</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="Linux SSH ELK">
             <protocol>ssh</protocol>
@@ -372,6 +398,7 @@
             <param name="username">student12@acme.local</param>
             <param name="password">student12</param>
             <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
         </connection>
         <connection name="Linux SSH ELK">
             <protocol>ssh</protocol>
