@@ -1,0 +1,5 @@
+Machine Name,Policy Target,Subcategory,Subcategory GUID,Inclusion Setting,Exclusion Setting,Setting Value
+,System,Audit Directory Service Access,{0cce923b-69ae-11d9-bed3-505054503030},Success and Failure,,3
+,System,Audit Detailed File Share,{0cce9244-69ae-11d9-bed3-505054503030},Success and Failure,,3
+,System,Audit Handle Manipulation,{0cce9223-69ae-11d9-bed3-505054503030},Success and Failure,,3
+,System,Audit SAM,{0cce9220-69ae-11d9-bed3-505054503030},Success and Failure,,3
