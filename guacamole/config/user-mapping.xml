@@ -157,6 +157,28 @@
             <param name="enable-wallpaper">true</param>
             <param name="enable-font-smoothing">true</param>
         </connection>
+        <connection name="RDP Student13">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-13.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student13@acme.local</param>
+            <param name="password">student13</param>
+            <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
+        </connection>
+        <connection name="RDP Student14">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-14.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student14@acme.local</param>
+            <param name="password">student14</param>
+            <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
+        </connection>
          <connection name="Linux SSH MQ">
             <protocol>ssh</protocol>
             <param name="hostname">10.0.0.6</param>
@@ -389,7 +411,7 @@
         </connection>
     </authorize>
     <authorize username="student12" password="student12">
-        <connection name="RDP Student012">
+        <connection name="RDP Student12">
             <protocol>rdp</protocol>
             <param name="hostname">ws-12.acme.local</param>
             <param name="port">3389</param>
@@ -403,6 +425,46 @@
         <connection name="Linux SSH ELK">
             <protocol>ssh</protocol>
             <param name="hostname">10.0.0.62</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>    
+    <authorize username="student13" password="student13">
+        <connection name="RDP Student13">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-13.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student13@acme.local</param>
+            <param name="password">student13</param>
+            <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.63</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>    
+    <authorize username="student14" password="student14">
+        <connection name="RDP Student14">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-14.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student14@acme.local</param>
+            <param name="password">student14</param>
+            <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.64</param>
             <param name="font-size">12</param>
             <param name="font-name">Terminus</param>
             <param name="enable-sftp">true</param>
