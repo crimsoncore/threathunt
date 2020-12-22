@@ -4,6 +4,7 @@ services:
     image: docker.elastic.co/logstash/logstash:7.8.0
     container_name: logstashMQ    
     ports:
+     - 9000:9000
      - 5044:5044
     restart: unless-stopped
     volumes:
