@@ -1,0 +1,1 @@
+Put the certificates for ssl beat plugin in this folder
