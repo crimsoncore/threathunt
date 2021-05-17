@@ -190,7 +190,18 @@
             <param name="enable-wallpaper">true</param>
             <param name="enable-font-smoothing">true</param>
         </connection>
-         <connection name="Linux SSH MQ">
+        <connection name="RDP Student16">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-16.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student16@acme.local</param>
+            <param name="password">student16</param>
+            <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
+        </connection>
+        <connection name="Linux SSH MQ">
             <protocol>ssh</protocol>
             <param name="hostname">10.0.0.6</param>
             <param name="username">thadmin</param>
@@ -496,6 +507,26 @@
         <connection name="Linux SSH ELK">
             <protocol>ssh</protocol>
             <param name="hostname">10.0.0.65</param>
+            <param name="font-size">12</param>
+            <param name="font-name">Terminus</param>
+            <param name="enable-sftp">true</param>
+        </connection>
+    </authorize>    
+    <authorize username="student16" password="student16">
+        <connection name="RDP Student16">
+            <protocol>rdp</protocol>
+            <param name="hostname">ws-16.acme.local</param>
+            <param name="port">3389</param>
+            <param name="security">nla</param>
+            <param name="ignore-cert">true</param>
+            <param name="username">student16@acme.local</param>
+            <param name="password">student16</param>
+            <param name="enable-wallpaper">true</param>
+            <param name="enable-font-smoothing">true</param>
+        </connection>
+        <connection name="Linux SSH ELK">
+            <protocol>ssh</protocol>
+            <param name="hostname">10.0.0.66</param>
             <param name="font-size">12</param>
             <param name="font-name">Terminus</param>
             <param name="enable-sftp">true</param>
