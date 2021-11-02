@@ -19,7 +19,6 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "8080:8080"
     volumes:
       - /opt/containers/traefik/traefik.yml:/etc/traefik/traefik.yml:ro
       - /opt/containers/traefik/config.yml:/etc/traefik/config.yml:ro
