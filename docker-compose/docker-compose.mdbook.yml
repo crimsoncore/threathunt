@@ -10,10 +10,15 @@ services:
       - 3000:3000
       - 3001:3001 
     labels:
-      - "traefik.http.routers.mdbook.rule=HostRegexp(`{subdomain:mdbook.*}.{subdomain:.*}`)"
-      - "traefik.enable=true"
+      - "traefik.http.routers.mdbook.rule=Host(`mdbook.th.denarm.be`)"
       - "traefik.http.routers.mdbook.entrypoints=web"
-      - "traefik.http.routers.mdbook.middlewares=th-auth"
+      - "traefik.http.routers.mdbook.middlewares=ssl@file"
+
+      - "traefik.http.routers.mdbook-ssl.rule=Host(`mdbook.th.denarm.be`)"
+      - "traefik.http.routers.mdbook-ssl.entrypoints=websecure"
+      - "traefik.http.routers.mdbook-ssl.tls=true"
+      - "traefik.http.routers.mdbook-ssl.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.mdbook-ssl.middlewares=auth-users@file"
     networks:
       - elastic
 networks:
