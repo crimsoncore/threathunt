@@ -1,21 +1,30 @@
 version: '3'
 services:
   guacamole:
-    image: tunip/guacamole
+    image: crimsoncorelabs/guacamole:v130
     container_name: guacamole
     restart: unless-stopped
     volumes:
       - /opt/threathunt/guacamole/config:/config
     ports:
       - 8080:8080
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.guacamole.rule=Host(`guacamole.th.denarm.be`)"
+      - "traefik.http.routers.guacamole.entrypoints=web"
+      - "traefik.http.routers.guacamole.middlewares=ssl@file"
+      - "traefik.http.routers.guacamole-ssl.rule=Host(`guacamole.th.denarm.be`)"
+      - "traefik.http.routers.guacamole-ssl.entrypoints=websecure"
+      - "traefik.http.routers.guacamole-ssl.tls=true"
+      - "traefik.http.routers.guacamole-ssl.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.add-guacamole.addprefix.prefix=/guacamole"
+      - "traefik.http.routers.guacamole-ssl.middlewares=add-guacamole"
     networks:
       - elastic
   guacamole-daemon:
     image: guacamole/guacd
     container_name: guacamole_daemon
     restart: unless-stopped
-    ports:
-      - 4822:4822
     networks:
       - elastic
 networks:
