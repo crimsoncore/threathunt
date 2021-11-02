@@ -10,6 +10,7 @@ services:
       - 3000:3000
       - 3001:3001 
     labels:
+      - "traefik.enable=true"
       - "traefik.http.routers.mdbook.rule=Host(`mdbook.th.denarm.be`)"
       - "traefik.http.routers.mdbook.entrypoints=web"
       - "traefik.http.routers.mdbook.middlewares=ssl@file"
