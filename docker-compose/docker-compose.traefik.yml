@@ -1,27 +1,30 @@
 version: '3'
 services:
   traefik:
-    image: traefik:latest
+    image: traefik:v2.1
     container_name: traefik
-    command:
-      #- "--log.level=DEBUG"
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--providers.file.filename=dynamic_conf.toml"
-      - "--providers.file.directory=/"
-      - "--providers.file.watch=true"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.middlewares.th-auth.basicauth.users=thadmin:$$apr1$$2RnW3J50$$bjzbmnFizHfUNlegGHFAN0"
+      - "traefik.http.routers.api.rule=Host(`traefik-mq.th.denarm.be`)"
+      - "traefik.http.routers.api.entrypoints=web"
+      - "traefik.http.routers.api.service=api@internal"
+      - "traefik.http.routers.api.middlewares=ssl@file"
+      - "traefik.http.routers.api-ssl.rule=Host(`traefik-mq.th.denarm.be`)"
+      - "traefik.http.routers.api-ssl.entrypoints=websecure"
+      - "traefik.http.routers.api-ssl.tls=true"
+      - "traefik.http.routers.api-ssl.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.api-ssl.service=api@internal"
+      - "traefik.http.middlewares.th-auth.basicauth.users=thadmin:$apr1$2RnW3J50$bjzbmnFizHfUNlegGHFAN0"
+      
     ports:
       - "80:80"
       - "443:443"
       - "8080:8080"
     volumes:
+      - /opt/containers/traefik/traefik.yml:/etc/traefik/traefik.yml:ro
+      - /opt/containers/traefik/config.yml:/etc/traefik/config.yml:ro
+      - /opt/containers/traefik/acme.json:/etc/traefik/acme.json:rw  
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /opt/threathunt/traefik/dynamic_conf.toml:/dynamic_conf.toml
     restart: unless-stopped
     networks:
       - elastic
