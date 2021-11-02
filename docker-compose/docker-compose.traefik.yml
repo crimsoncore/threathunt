@@ -14,7 +14,7 @@ services:
       - "traefik.http.routers.api-ssl.tls=true"
       - "traefik.http.routers.api-ssl.tls.certresolver=letsencrypt"
       - "traefik.http.routers.api-ssl.service=api@internal"
-      - "traefik.http.middlewares.th-auth.basicauth.users=thadmin:$apr1$2RnW3J50$bjzbmnFizHfUNlegGHFAN0"
+      - "traefik.http.middlewares.th-auth.basicauth.users=thadmin:$$apr1$$2RnW3J50$$bjzbmnFizHfUNlegGHFAN0"
       
     ports:
       - "80:80"
