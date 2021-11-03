@@ -1,11 +1,11 @@
 version: '3'
 services:
   logstashMQ:
-    image: docker.elastic.co/logstash/logstash:7.8.0
+    image: docker.elastic.co/logstash/logstash:7.6.2
     container_name: logstashMQ    
     ports:
-     - 9000:9000
      - 5044:5044
+     - 5045:5045
     restart: unless-stopped
     volumes:
     - /opt/threathunt/logstashMQ/pipeline/:/usr/share/logstash/pipeline/
