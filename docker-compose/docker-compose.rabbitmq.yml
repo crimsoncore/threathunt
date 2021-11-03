@@ -12,6 +12,16 @@ services:
       - 5672:5672
       - 5673:5673
       - 15672:15672
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rabbitmq.rule=Host(`rabbitmq.th.denarm.be`)"
+      - "traefik.http.routers.rabbitmq.entrypoints=web"
+      - "traefik.http.routers.rabbitmq.middlewares=ssl@file"
+      - "traefik.http.services.rabbitmq.loadbalancer.server.port=15672"
+      - "traefik.http.routers.rabbitmq-ssl.rule=Host(`rabbitmq.th.denarm.be`)"
+      - "traefik.http.routers.rabbitmq-ssl.entrypoints=websecure"
+      - "traefik.http.routers.rabbitmq-ssl.tls=true"
+      - "traefik.http.routers.rabbitmq-ssl.tls.certresolver=letsencrypt"
     networks:
       - elastic
 networks:
