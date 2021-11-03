@@ -5,9 +5,14 @@ services:
     container_name: portainer
     restart: unless-stopped
     labels:
-      - "traefik.http.routers.portainer.rule=HostRegexp(`{subdomain:portainer-elk.*}.{subdomain:.*}`)"
       - "traefik.enable=true"
-      - "traefik.http.routers.portainer.entrypoints=web"
+      - "traefik.http.routers.portainer.rule: "Host(`portainer-mq.th.denarm.be`)"
+      - "traefik.http.routers.portainer.entrypoints: "web"
+      - "traefik.http.routers.portainer.middlewares: "ssl@file"
+      - "traefik.http.routers.portainer-ssl.rule: "Host(`portainer-mq.th.denarm.be`)"
+      - "traefik.http.routers.portainer-ssl.entrypoints: "websecure"
+      - "traefik.http.routers.portainer-ssl.tls: "true"
+      - "traefik.http.routers.portainer-ssl.tls.certresolver: "letsencrypt"
     volumes:
     - /opt/threathunt/portainer/data:/data
     - /var/run/docker.sock:/var/run/docker.sock
